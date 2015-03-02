@@ -1,0 +1,13 @@
+{
+  "name": "Project Template",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "angularjs": "~1.2.23",
+    "angular-resource": "~1.2.23",
+    "angular-route": "~1.2.25",
+    "animate-scss": "~1.0.0",
+    "bootstrap-sass-only": "~3.2.0",
+    "angular-local-storage": "~0.1.1"
+  }
+}

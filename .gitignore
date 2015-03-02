@@ -1,0 +1,12 @@
+.DS_Store
+.sass-cache
+node_modules
+zipfiles
+dist
+*.bak
+
+app/bower_components
+app/dist
+app/css
+app/img/icons
+app/js/templates.js

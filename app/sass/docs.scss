@@ -1,0 +1,5 @@
+@import "vandor";
+
+html, body{
+  @include square(100%);
+}
