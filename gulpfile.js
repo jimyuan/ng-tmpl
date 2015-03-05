@@ -43,7 +43,7 @@
   //|**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   //| ✓ sass2css
   //'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-  gulp.task('sass', function(){
+  gulp.task('sass', function() {
     return gulp.src(_.sass + '/**/*.{scss, sass}')
       .pipe($.plumber({
         errorHandler: function (error) {
@@ -60,7 +60,7 @@
           'app/bower_components/bootstrap-sass-only/scss/bootstrap/',
           'app/bower_components/animate-scss/src/'
         ]
-      }).on('error', $.util.log))
+      }))
       .pipe(gulp.dest(_.css))
       .pipe($.size());
   });

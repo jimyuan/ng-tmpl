@@ -10,6 +10,5 @@
   }])
   .controller('HomeController', ["$scope", function($scope){
       // code here
-      console.log(1)
   }]);
 })();
