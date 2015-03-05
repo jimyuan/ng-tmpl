@@ -43,51 +43,25 @@
   //|**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   //| ✓ sass2css
   //'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-  gulp.task('sass', function() {
-    return gulp.src(_.sass + '/**/*.{scss, sass}').pipe($.rubySass({
-        loadPath: [
+  gulp.task('sass', function(){
+    return gulp.src(_.sass + '/**/*.{scss, sass}')
+      .pipe($.plumber({
+        errorHandler: function (error) {
+          console.log(error.message);
+          this.emit('end');
+      }}))
+      .pipe($.compass({
+        comments: true,
+        css: _.css,
+        sass: _.sass,
+        image: _.img,
+        style: 'expanded',
+        import_path: [
           'app/bower_components/bootstrap-sass-only/scss/bootstrap/',
           'app/bower_components/animate-scss/src/'
-        ],
-        style: 'expanded',
-        compass: true,
-        noCache: false,
-        lineNumber: true
+        ]
       }).on('error', $.util.log))
-      .pipe($.plumber())
       .pipe(gulp.dest(_.css))
-      .pipe($.size());
-  });
-
-  //|**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  //| ✓ minify svg files
-  //'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-  // gulp.task('svg', function() {
-  //   return gulp.src([
-  //       _.img + '/**/*.svg'
-  //     ])
-  //     .pipe($.plumber())
-  //     .pipe($.svgmin([{
-  //       removeDoctype: false
-  //     }, {
-  //       removeComments: false
-  //     }]))
-  //     .pipe(gulp.dest(_.dist + '/img'))
-  //     .pipe($.size());
-  // });
-
-  //|**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  //| ✓ minify images
-  //'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-  gulp.task('images', function() {
-    return gulp.src([_.img + '/**/*.{png,jpg,jpeg,gif,ico}'])
-      .pipe($.plumber())
-      .pipe($.imagemin({
-        optimizationLevel: 3,
-        progressive: true,
-        interlaced: true
-      }))
-      .pipe(gulp.dest(_.dist + '/img'))
       .pipe($.size());
   });
 
@@ -193,13 +167,6 @@
       gulp.start('sass');
     });
 
-    // Watch image files
-    $.watch({
-      glob: [_.img + '/**/*.{png,jpg,jpeg,gif,ico}']
-    }, function() {
-      gulp.start('images');
-    });
-
     // Watch template files
     $.watch({
       glob: [_.view + '/**/*.html']
@@ -221,7 +188,7 @@
   //| ✓ alias
   //'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   gulp.task('test',  ['jsonlint', 'jshint']);
-  gulp.task('build', ['test', 'clean', 'html', 'tmpl2js', 'images', 'copy']);
+  gulp.task('build', ['test', 'clean', 'html', 'tmpl2js', 'copy']);
 
   //|**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   //| ✓ default
@@ -229,7 +196,5 @@
   gulp.task('default', function() {
     gulp.start('build');
   });
-
-
-
+  
 }(require('gulp'), require('gulp-load-plugins')));

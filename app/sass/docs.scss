@@ -1,5 +1,41 @@
 @import "vandor";
+@import "sprite";
 
 html, body{
   @include square(100%);
+}
+
+h3 > .glyphicon-bell{
+  color: $brand-success;
+  text-shadow: 2px 2px $gray-lighter;
+  @include transform-origin(top center);
+  @include animation(ring-bell .1s linear infinite alternate);
+}
+
+@include keyframes(ring-bell){
+  from {
+    @include rotate(20deg);
+  }
+  50% {
+    @include rotate(0deg);
+  }
+  100%{
+    @include rotate(-20deg);
+  }
+}
+
+[class^="icon-"]{
+  margin: 10px auto;
+  background-color: #ccc !important;
+  border-radius: 4px;
+}
+
+.icon-1{
+  @include get-sprite($icons-sprites, lego);
+}
+.icon-2{
+  @include get-sprite($icons-2x-sprites, lego, 2);
+}
+.icon-3{
+  @include get-sprite($icons-3x-sprites, lego, 3);
 }
