@@ -8,9 +8,7 @@
     $rootScope.title = 'Project title';
 
   }])
-  .controller('HomeController', [
-    '$scope', function(
-     $scope){
-
+  .controller('HomeController', ["$scope", function($scope){
+      // code here
   }]);
 })();

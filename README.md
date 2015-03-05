@@ -21,7 +21,7 @@
 * copy 将一些有用附件复制到dist目录
 * zip 将生成好德dist目录打成压缩包
 * clean 清空dist目录
-* ------
+------
 * connect 配置内置http server
 * server 启动server
 * watch 设置监听文件及采用相应的处理
