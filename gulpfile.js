@@ -61,6 +61,9 @@
           'app/bower_components/animate-scss/src/'
         ]
       }))
+      .pipe($.autoprefixer({
+          browsers: ['last 2 versions']
+      }))
       .pipe(gulp.dest(_.css))
       .pipe($.size());
   });
@@ -140,9 +143,9 @@
   //| ✓ server
   //    use mock data: localhost
   //'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-   gulp.task('server', ['connect', 'sass', 'tmpl2js'], function() {
-     $.shelljs.exec('open http://localhost:9000/');
-   });
+  gulp.task('server', ['connect', 'sass', 'tmpl2js'], function() {
+    $.shelljs.exec('open http://localhost:9000/');
+  });
 
   //|**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   //| ✓ watch
