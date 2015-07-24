@@ -1,0 +1,30 @@
+@charset 'utf-8';
+
+$global-spacing: 1.6rem !default;
+
+$font-sans: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans","wenquanyi micro hei","Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif !default;
+$font-mono: Menlo, Monaco, Consolas, "Courier New", monospace !default;
+
+$base-text-color: lighten(black, 15%) !default;
+$base-font-size:  1.6rem !default; //16px
+$base-background: white !default;
+
+$color-link:         #3ca29b !default; 
+
+// Extra small screen / phone
+$screen-xs:   480px   !default;
+// Small screen / tablet
+$screen-sm:   768px   !default;
+// Medium screen / desktop
+$screen-md:   992px   !default;
+// Large screen / wide desktop
+$screen-lg:   1200px  !default;
+
+$breakpoints: (
+  'xs': (min-width: $screen-xs),
+  'sm': (min-width: $screen-sm),
+  'md': (min-width: $screen-md),
+  'lg': (min-width: $screen-lg)
+);
+
+

@@ -1,9 +1,9 @@
 .DS_Store
 .sass-cache
 node_modules
+bower_components
 zipfiles
 dist
 *.bak
 
 app/css
-app/js/templates.js
