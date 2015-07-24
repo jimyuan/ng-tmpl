@@ -5,8 +5,5 @@ zipfiles
 dist
 *.bak
 
-app/bower_components
-app/dist
 app/css
-app/img/icons
 app/js/templates.js

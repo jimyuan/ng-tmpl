@@ -1,15 +1,13 @@
 (function(){
   'use strict';
-  var viewPath = "/views";
+  var viewPath = './partial';
   angular.module('ProjectApp', [
     'ngRoute',
     'ngResource',
-    'LocalStorageModule',
     'ProjectControllers',
     'ProjectDirectives',
     'ProjectResources',
     'ProjectServices',
-    'ProjectTemplate',
     'ProjectFilters'
   ])
   .config(['$routeProvider', function($routeProvider){

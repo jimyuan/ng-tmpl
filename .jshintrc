@@ -12,5 +12,13 @@
   "laxcomma" : true,
   "jquery"   : true,
   "node"     : true,
-  "validthis": true
+  "validthis": true,
+  "strict"   : true,  // require "use strict"
+
+  "indent"   : 2,
+  "quotmark" : "single",
+  
+  // BEHAVIOR
+  "passfail" : false,  // stop on first error.
+  "maxerr"   : 100       // maximum error before stopping.
 }
