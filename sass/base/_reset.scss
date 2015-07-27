@@ -55,10 +55,10 @@ button {
  */
 
 a {
-  color: $color-link;
+  color: $base-color-link;
   &:hover,
   &:focus {
-    color: lighten($color-link, 10%);
+    color: lighten($base-color-link, 10%);
   }
 
 }
@@ -114,21 +114,7 @@ h3,
 h4,
 h5,
 h6 {
-  //margin: 0;
   margin: 0 0 $global-spacing 0;
-  font-size: 100%;
-
-  & > small {
-    color: gray;
-  }
-}
-
-h1 {
-  font-size: 1.5em;
-}
-
-h2 {
-  font-size: 1.25em;
 }
 
 * + h1,
@@ -198,28 +184,7 @@ address {
 /* Quotes */
 q,
 blockquote {
-  //font-style: italic;
-}
-
-blockquote {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 15px;
-  border-left: 4px solid #ddd;
-  font-family: $font-mono;
-
-  /* Small print for identifying the source */
-  small {
-    display: block;
-    color: #999;
-    font-family: $font-sans;
-    text-align: right;
-  }
-
-  /* Smaller margin if `small` follows */
-  p:last-of-type {
-    margin-bottom: 0;
-  }
+  font-style: italic;
 }
 
 
@@ -241,4 +206,11 @@ button,
 input:not([type="radio"]):not([type="checkbox"]),
 select {
   vertical-align: middle;
+}
+
+// add link info when print
+@media print {
+  a[href]:after {
+    content: " (" attr(href) ")" !important;
+  }
 }
