@@ -8,7 +8,7 @@ html {
 
 body {
   position: relative;
-  background:  $base-background;
+  background: $base-background;
   font-family: $font-sans;
   font-size: $base-font-size;
   color: $base-text-color;
@@ -33,7 +33,7 @@ button {
   text-rendering: optimizeLegibility;  /* 1 */
   -webkit-font-smoothing: antialiased; /* 2 */
   -moz-osx-font-smoothing: grayscale;  /* 3 Default: auto */
-  -moz-font-feature-settings: "liga", "kern"
+  font-feature-settings: 'liga', 'kern';
 }
 
 /*Only phones */
@@ -56,6 +56,7 @@ button {
 
 a {
   color: $base-color-link;
+
   &:hover,
   &:focus {
     color: lighten($base-color-link, 10%);
@@ -88,7 +89,7 @@ pre,
 address,
 fieldset,
 figure {
-  margin: 0 0 $global-spacing 0;
+  margin: 0 0 $global-spacing;
 }
 
 * + p,
@@ -114,7 +115,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 0 $global-spacing 0;
+  margin: 0 0 $global-spacing;
 }
 
 * + h1,
@@ -148,14 +149,16 @@ ol > li > ul {
 /* Description lists */
 dt {
   font-weight: bold;
-  & + dd {
-    margin-top: .5em;
+
+  + dd {
+    margin-top: 0.5em;
   }
 }
 
 dd {
   margin-left: 0;
-  & + dt {
+
+  + dt {
     margin-top: 1em;
   }
 }
@@ -211,6 +214,6 @@ select {
 // add link info when print
 @media print {
   a[href]:after {
-    content: " (" attr(href) ")" !important;
+    content: ' (' attr(href) ')';
   }
 }
