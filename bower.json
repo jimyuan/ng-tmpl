@@ -1,10 +1,11 @@
 {
   "name": "Project Template",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "angularjs": "~1.2.23",
-    "angular-resource": "~1.2.23",
-    "angular-route": "~1.2.25"
+    "angularjs": "~1.4",
+    "angular-resource": "~1.4",
+    "angular-route": "~1.4",
+    "angular-animate": "~1.4.3"
   }
 }

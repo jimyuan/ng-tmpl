@@ -3,6 +3,7 @@
   var viewPath = './partial';
   angular.module('ProjectApp', [
     'ngRoute',
+    'ngAnimate',
     'ngResource',
     'ProjectControllers',
     'ProjectDirectives',
@@ -16,6 +17,12 @@
       .when('/home', {
         templateUrl: viewPath + '/home.html',
         controller:  'HomeController'
+      })
+      .when('/page1', {
+        templateUrl: viewPath + '/page1.html'
+      })
+      .when('/type', {
+        templateUrl: viewPath + '/type.html'
       })
       
       .otherwise({redirectTo: '/home'});
