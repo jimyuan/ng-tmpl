@@ -1,14 +1,11 @@
 (function(){
   'use strict';
   angular.module('ProjectControllers', [])
-  .controller('GlobelController', [
-    '$rootScope',function(
-     $rootScope){
+  
+  .controller('HomeController', [
+    '$rootScope', '$scope', function($rootScope, $scope){
 
-    $rootScope.title = 'Project title';
-
-  }])
-  .controller('HomeController', ['$scope', function($scope){
+      $rootScope.title = 'Home Page'
       // code here
   }]);
 })();
