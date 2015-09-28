@@ -8,7 +8,7 @@
     _ = {
       app:  'app',
       dist: 'dist',
-      sass: 'sass',
+      scss: 'scss',
       img:  'app/img',
       view: 'app/partial',
       css:  'app/css',
@@ -23,7 +23,7 @@
   //|**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   //| ~ Wait for jekyll-build, then launch the Server
   //|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-  gulp.task('browser-sync', ['sass'], function() {
+  gulp.task('browser-sync', ['scss'], function() {
     $.browserSync({
       ui: false,
       server: {
@@ -47,7 +47,11 @@
   //| ~ scsslint - scss files test
   //|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   gulp.task('scsslint', function() {
-    return gulp.src([_.sass + '/**/*.scss'])
+    return gulp.src([
+      _.scss + '/**/*.scss',
+      '!' + _.scss + '/base/_normalize.scss',
+      '!' + _.scss + '/base/_reset.scss',
+      '!' + _.scss + '/utils/_variables.scss'])
       .pipe($.scssLint({
         'config': '.scsslintrc',
         'customReport': $.scssLintStylish
@@ -55,17 +59,25 @@
   });
 
   //|**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  //| ✓ sass2css (node-sass)
+  //| ✓ scss2css (node-sass)
   //'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-  gulp.task('sass', function() {
-    return gulp.src(_.sass + '/**/*.scss')
+  gulp.task('scss', function() {
+    return gulp.src(_.scss + '/**/*.scss')
       .pipe($.plumber({ errorHandler: handleError}))
       .pipe($.sourcemaps.init())
       .pipe($.sass({
         outputStyle: 'expanded',
         includePaths: [ './bower_components/' ]
       }))
-      .pipe($.autoprefixer(['last 15 versions', '> 1%', 'ie 8']))
+      .pipe($.autoprefixer([
+          'Android 2.3',
+          'Android >= 4',
+          'Chrome >= 30',
+          'Firefox >= 24',
+          'Explorer >= 9',
+          'iOS >= 7',
+          'Opera >= 12',
+          'Safari >= 7.1']))
       .pipe($.sourcemaps.write('./'))
       .pipe($.browserSync.reload({stream:true}))
       .pipe(gulp.dest(_.css))
@@ -119,7 +131,7 @@
       }))
       .pipe($.ngHtml2js({
         moduleName: "ProjectTemplate",
-        prefix: "/views/"
+        prefix: "/partial/"
       }))
       .pipe($.concat("templates.js", {
         newLine: ';'
@@ -145,7 +157,7 @@
   //| ✓ watch
   //'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   gulp.task('watch', function () {
-      gulp.watch(_.sass + '/**/*.scss', ['sass']);
+      gulp.watch(_.scss + '/**/*.scss', ['scss']);
       gulp.watch([
         _.app + '/**/*.{html,js}',
         _.img + '/**/*.{png,jpg,jpeg,gif,ico}'
@@ -177,5 +189,5 @@
   //| ✓ default
   //'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   gulp.task('default', ['browser-sync', 'watch']);
-  
+
 }(require('gulp'), require('gulp-load-plugins')));

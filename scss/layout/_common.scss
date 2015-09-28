@@ -2,10 +2,11 @@
 
 .app-body {
   position: relative;
+  -webkit-overflow-scrolling: touch;
 }
 
 .container {
   @include absolute(top 0 left 0 right 0);
-  padding: $global-spacing;
+  padding: $grid-gutter-width;
   background: white;
 }
