@@ -1,6 +1,6 @@
 {
-  "name": "Project Template",
-  "version": "0.2.0",
+  "name": "ng-template",
+  "version": "0.2.5",
   "private": true,
   "dependencies": {
     "angular-animate": "~1.4.3",
