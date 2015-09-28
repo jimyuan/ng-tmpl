@@ -8,10 +8,14 @@
   - gulp
   - bower
 
-## 如需进行scss test，则可能需要 `ruby` 环境来安装 scss-lint：
+## 项目运行
+  `$ gulp`
 
-  $ gem install scss-lint
+## 如需进行scss test，则可能需要 `ruby` 环境来安装 scss-lint：
+`$ gem install scss-lint`
 
 ## gulpfile.js功能配置
 
-*
+* gulp test -- js & scss 文件测试
+* gulp build -- 打包
+* gulp -- 运行项目的开发环境（默认）
